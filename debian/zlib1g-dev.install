@@ -1,5 +1,4 @@
-usr/include/zlib.h
-usr/include/*/zconf.h
+usr/include/*
 usr/lib/*/libz.a
 usr/lib/*/libz.so
 usr/share/man/man3/*
