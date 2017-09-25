@@ -1,3 +1,12 @@
+zlib (1:1.2.11.dfsg-1) unstable; urgency=low
+
+  * New upstream release (closes: #883180).
+  * Use debian/patches/series to cope with yet more tooling issues with
+    patches format (closes: #896078).
+  * Use DEP-5 format (closes: #862260).
+
+ -- Mark Brown <broonie@debian.org>  Mon, 25 Sep 2017 12:03:05 -0700
+
 zlib (1:1.2.8.dfsg-5) unstable; urgency=low
 
   * Add loud warnings to the descriptions of all the multilib packages
