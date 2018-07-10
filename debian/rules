@@ -34,6 +34,8 @@ else
 	CFLAGS += -O3
 endif
 
+ifeq (,$(filter stage1,$(DEB_BUILD_PROFILES)))
+
 32-ARCHS=amd64 ppc64 kfreebsd-amd64 s390x
 64-ARCHS=s390 sparc i386 powerpc mips mipsel
 
@@ -68,6 +70,8 @@ EXTRA_INSTALL+=installn32
 EXTRA_BUILD+=buildn32-stamp
 mn32=-mabi=n32
 endif
+
+endif # !stage1
 
 UNALIGNED_ARCHS=i386 amd64 kfreebsd-i386 kfreebsd-amd64 hurd-i386 lpia
 ifneq (,$(findstring $(DEB_HOST_ARCH), $(UNALIGNED_ARCHS)))
@@ -162,8 +166,7 @@ install: build
 
 	$(MAKE) prefix=$(CURDIR)/debian/tmp/usr install
 
-	install -d debian/tmp/lib/$(DEB_HOST_MULTIARCH) debian/tmp/usr/include/$(DEB_HOST_MULTIARCH)
-	mv debian/tmp/usr/include/zconf.h debian/tmp/usr/include/$(DEB_HOST_MULTIARCH)/
+	install -d debian/tmp/lib/$(DEB_HOST_MULTIARCH)
 	mv debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libz.so.* debian/tmp/lib/$(DEB_HOST_MULTIARCH)
 	ln -sf /lib/$(DEB_HOST_MULTIARCH)/$$(readlink debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libz.so) debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libz.so
 
@@ -195,16 +198,16 @@ binary-arch: build install $(EXTRA_INSTALL)
 	dh_compress -s
 	dh_fixperms -s
 	dh_makeshlibs -pzlib1g -V"zlib1g (>= 1:1.2.3.3.dfsg-1)" --add-udeb=zlib1g-udeb
+ifeq (,$(filter stage1,$(DEB_BUILD_PROFILES)))
 ifneq (,$(findstring $(DEB_HOST_ARCH), $(32-ARCHS)))
 	dh_makeshlibs -plib32z1 -V"lib32z1 (>= 1:1.2.3.3.dfsg-1)"
 endif
-ifneq (,$(findstring $(DEB_HOST_ARCH), $(32-ARCHS)))
 ifneq (,$(findstring $(DEB_HOST_ARCH), $(64-ARCHS)))
 	dh_makeshlibs -plib64z1 -V"lib64z1 (>= 1:1.2.3.3.dfsg-1)"
 endif
-endif
 ifneq (,$(findstring $(DEB_HOST_ARCH), $(N32-ARCHS)))
 	dh_makeshlibs -plibn32z1 -V"libn32z1 (>= 1:1.2.3.3.dfsg-1)"
+endif
 endif
 	dh_installdeb -s
 	dh_shlibdeps -s
