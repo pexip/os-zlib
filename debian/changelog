@@ -1,3 +1,9 @@
+zlib (1:1.2.8.dfsg-5pexip1) pexip; urgency=medium
+
+  * Migrate to Stretch
+
+ -- John-Mark Bell <jmb@pexip.com>  Tue, 10 Jul 2018 11:57:08 +0000
+
 zlib (1:1.2.8.dfsg-5) unstable; urgency=low
 
   * Add loud warnings to the descriptions of all the multilib packages
