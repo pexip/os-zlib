@@ -1,1 +1,3 @@
-debian.series
+cflags-for-minizip
+use-dso
+use-dso-really
