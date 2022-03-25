@@ -1,10 +1,38 @@
-zlib (1:1.2.11.dfsg-1+deb10u1) buster-security; urgency=high
+zlib (1:1.2.11.dfsg-2+deb11u1) bullseye-security; urgency=high
 
   * Non-maintainer upload by the Security Team.
   * Fix a bug that can crash deflate on some input when using Z_FIXED
     (CVE-2018-25032) (Closes: #1008265)
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Mon, 28 Mar 2022 16:54:02 +0200
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 25 Mar 2022 22:45:28 +0100
+
+zlib (1:1.2.11.dfsg-2) unstable; urgency=low
+
+  * Acknowledge previous NMUs (closes: #949388).
+  * Remove zlib1g-dbg in favour of dbgsym (closes: #497831, #926161).
+  * Rename stage1 to nobiarch, patch no longer applies due to
+    uncoordinated NMUs (closes: #892762).
+  * Debhelper has renamed -s to -a.
+  * Policy 4.5.0 (no changes).
+
+ -- Mark Brown <broonie@debian.org>  Mon, 24 Feb 2020 21:07:12 +0000
+
+zlib (1:1.2.11.dfsg-1.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix ftbfs on mips64el caused by the previous NMU by
+    remove it from 32-ARCHS to keep NMU minial.
+
+ -- YunQiang Su <syq@debian.org>  Mon, 03 Feb 2020 12:00:47 +0800
+
+zlib (1:1.2.11.dfsg-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Enable lib64 for mipsn32 mipsn32el mipsr6 mipsr6el mipsn32r6 mipsn32r6el x32
+    help to add binutils-host64 for 32bit architectures (Closes: 949388)
+  * Remove outdated binutils version requirement for mips/mipsel.
+
+ -- YunQiang Su <syq@debian.org>  Tue, 28 Jan 2020 19:55:38 +0800
 
 zlib (1:1.2.11.dfsg-1) unstable; urgency=low
 
