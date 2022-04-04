@@ -1,3 +1,17 @@
+zlib (1:1.2.11.dfsg-1+deb10u1pexip1) pexip; urgency=medium
+
+  * New upstream release with security fix
+
+ -- Steve McIntyre <steve.mcintyre@pexip.com>  Mon, 04 Apr 2022 11:16:19 +0100
+
+zlib (1:1.2.11.dfsg-1+deb10u1) buster-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Fix a bug that can crash deflate on some input when using Z_FIXED
+    (CVE-2018-25032) (Closes: #1008265)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Mon, 28 Mar 2022 16:54:02 +0200
+
 zlib (1:1.2.11.dfsg-1pexip2) pexip; urgency=medium
 
   * Rebuild in buster environment
