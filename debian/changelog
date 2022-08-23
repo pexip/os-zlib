@@ -1,3 +1,12 @@
+zlib (1:1.2.11.dfsg-2+deb11u2) bullseye-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Fix a bug when getting a gzip header extra field with inflate()
+    (CVE-2022-37434) (Closes: #1016710)
+  * Fix extra field processing bug that dereferences NULL state->head
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Tue, 23 Aug 2022 20:54:06 +0200
+
 zlib (1:1.2.11.dfsg-2+deb11u1) bullseye-security; urgency=high
 
   * Non-maintainer upload by the Security Team.
