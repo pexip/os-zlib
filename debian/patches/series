@@ -2,3 +2,4 @@ cflags-for-minizip
 use-dso
 use-dso-really
 Fix-a-bug-that-can-crash-deflate-on-some-input-when-.patch
+CVE-2022-37434

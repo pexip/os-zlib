@@ -1,3 +1,11 @@
+zlib (1:1.2.11.dfsg-1+deb10u1pexip2) pexip; urgency=medium
+
+  * Backport fix for CVE-2022-37434 from git
+    * eff308af425b67093bab25f80f1ae950166bece1
+    * 1eb7682f845ac9e9bf9ae35bbfb3bad5dacbd91d
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Fri, 26 Aug 2022 10:54:56 +0100
+
 zlib (1:1.2.11.dfsg-1+deb10u1pexip1) pexip; urgency=medium
 
   * New upstream release with security fix
