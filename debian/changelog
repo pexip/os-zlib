@@ -1,19 +1,37 @@
-zlib (1:1.2.11.dfsg-2+deb11u2) bullseye-security; urgency=high
+zlib (1:1.2.13.dfsg-1) unstable; urgency=low
 
-  * Non-maintainer upload by the Security Team.
+  * New upstream release.
+  * Remove non-DFSG sources for contrib/testzlib (closes: #1012674).
+  * Policy 4.6.1 (no changes).
+
+ -- Mark Brown <broonie@debian.org>  Sat, 05 Nov 2022 12:24:46 +0000
+
+zlib (1:1.2.11.dfsg-4.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
   * Fix a bug when getting a gzip header extra field with inflate()
     (CVE-2022-37434) (Closes: #1016710)
   * Fix extra field processing bug that dereferences NULL state->head
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Tue, 23 Aug 2022 20:54:06 +0200
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 12 Aug 2022 22:15:03 +0200
 
-zlib (1:1.2.11.dfsg-2+deb11u1) bullseye-security; urgency=high
+zlib (1:1.2.11.dfsg-4) unstable; urgency=medium
 
-  * Non-maintainer upload by the Security Team.
-  * Fix a bug that can crash deflate on some input when using Z_FIXED
-    (CVE-2018-25032) (Closes: #1008265)
+  * Pick upstream patch for CVE-2018-25032 (closes: #1008265).
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 25 Mar 2022 22:45:28 +0100
+ -- Mark Brown <broonie@debian.org>  Fri, 25 Mar 2022 23:32:05 +0000
+
+zlib (1:1.2.11.dfsg-3) unstable; urgency=low
+
+  * Add build-arch and build-indep (#999292).
+  * Bump debhelper requirement to current.
+  * Add win32 to the list of files excluded from the DFSG
+    tarball (closes: #919598).
+  * Tighten matching for 32 bit architectures using patch from
+    Helmut Grohne (closes: #1006799).
+  * Policy 4.0.0 (no changes).
+
+ -- Mark Brown <broonie@debian.org>  Fri, 18 Mar 2022 00:21:37 +0000
 
 zlib (1:1.2.11.dfsg-2) unstable; urgency=low
 

@@ -1,6 +1,2 @@
 cflags-for-minizip
-use-dso
 use-dso-really
-Fix-a-bug-that-can-crash-deflate-on-some-input-when-.patch
-Fix-a-bug-when-getting-a-gzip-header-extra-field-wit.patch
-Fix-extra-field-processing-bug-that-dereferences-NUL.patch
