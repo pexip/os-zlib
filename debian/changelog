@@ -1,3 +1,52 @@
+zlib (1:1.3.dfsg+really1.3.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Mark Brown <broonie@debian.org>  Fri, 10 May 2024 10:32:36 +0100
+
+zlib (1:1.3.dfsg-3.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Rename libraries for 64-bit time_t transition.  Closes: #1063242
+
+ -- Benjamin Drung <bdrung@debian.org>  Fri, 01 Mar 2024 12:59:44 +0000
+
+zlib (1:1.3.dfsg-3) unstable; urgency=low
+
+  * Update the version of texlive-binaries we break since they still had
+    broken version checks (closes: #1056312).
+
+ -- Mark Brown <broonie@debian.org>  Thu, 23 Nov 2023 13:02:20 +0000
+
+zlib (1:1.3.dfsg-2) unstable; urgency=low
+
+  * Install library into /usr (closes: #1055938).
+  * Backport patch for minizip CVE-2023-45853 (closes: #1054290).
+
+ -- Mark Brown <broonie@debian.org>  Fri, 17 Nov 2023 22:10:10 +0000
+
+zlib (1:1.3.dfsg-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Mark Brown <broonie@debian.org>  Mon, 06 Nov 2023 16:28:55 +0000
+
+zlib (1:1.2.13.dfsg-3) unstable; urgency=low
+
+  * Further fixes to the minizip integration, don't install the minizip
+    headers in both -dev packages (closes: #1049384).
+
+ -- Mark Brown <broonie@debian.org>  Tue, 15 Aug 2023 14:35:28 +0100
+
+zlib (1:1.2.13.dfsg-2) unstable; urgency=low
+
+  * Build minizip packages since for some reason the minizip upstream
+    appears to have decided to release via zlib's contrib directiory
+    and do nothing separate, patch from Michael Gilbert adapted to fix
+    build issues (closes: #956181).
+
+ -- Mark Brown <broonie@debian.org>  Tue, 15 Aug 2023 00:28:42 +0100
+
 zlib (1:1.2.13.dfsg-1) unstable; urgency=low
 
   * New upstream release.
