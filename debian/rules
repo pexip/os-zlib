@@ -87,6 +87,8 @@ configure-stamp: configure
 
 	AR=$(AR) CC="$(DEB_HOST_GNU_TYPE)-gcc" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" uname=GNU ./configure --shared --prefix=/usr --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH)
 
+	cd contrib/minizip && autoreconf -fis && CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" uname=GNU ./configure --prefix=/usr --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH)
+
 	touch $@
 
 configure64-stamp: configure
@@ -127,6 +129,9 @@ build-stamp: configure-stamp
 	dh_testdir
 
 	$(MAKE)
+
+	$(MAKE) -C contrib/minizip minizip miniunzip
+
 	-$(MAKE) test
 
 	touch $@
@@ -150,6 +155,9 @@ clean:
 	dh_testdir
 	dh_testroot
 
+	if [ -f contrib/minizip/Makefile ]; then $(MAKE) -C contrib/minizip clean; fi
+	cd contrib/minizip && rm -f compile config.* configure depcomp install-sh libtool Makefile Makefile.in aclocal.m4 ltmain.sh missing minizip.pc minizip miniunzip
+
 	$(MAKE) distclean
 
 	rm -f build-stamp configure-stamp foo.gz 
@@ -169,9 +177,8 @@ install: build
 
 	$(MAKE) prefix=$(CURDIR)/debian/tmp/usr install
 
-	install -d debian/tmp/lib/$(DEB_HOST_MULTIARCH)
-	mv debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libz.so.* debian/tmp/lib/$(DEB_HOST_MULTIARCH)
-	ln -sf /lib/$(DEB_HOST_MULTIARCH)/$$(readlink debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libz.so) debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libz.so
+	$(MAKE) -C contrib/minizip prefix=$(CURDIR)/debian/tmp/usr install
+	find contrib/minizip
 
 install64: install build64-stamp
 	$(MAKE) -C debian/64 prefix=$(CURDIR)/debian/tmp install
@@ -190,6 +197,9 @@ binary-indep: build install
 binary-arch: build install $(EXTRA_INSTALL)
 	dh_testdir
 	dh_testroot
+	mkdir -p debian/tmp/usr/bin
+	cp contrib/minizip/.libs/minizip debian/tmp/usr/bin
+	cp contrib/minizip/.libs/miniunzip debian/tmp/usr/bin
 	dh_installchangelogs -a ChangeLog
 	dh_installdocs -a
 	dh_installexamples -a
@@ -200,6 +210,7 @@ binary-arch: build install $(EXTRA_INSTALL)
 	dh_strip -a --dbgsym-migration="zlib1g-dbg (<< 1:1.2.11.dfsg-2~)"
 	dh_compress -a
 	dh_fixperms -a
+	dh_makeshlibs -plibminizip1t64 -V"libminizip1t64 (>> 1:1.2.13.dfsg-1)"
 	dh_makeshlibs -pzlib1g -V"zlib1g (>= 1:1.2.3.3.dfsg-1)" --add-udeb=zlib1g-udeb
 ifeq (,$(filter nobiarch,$(DEB_BUILD_PROFILES)))
 ifneq (,$(filter $(DEB_HOST_ARCH), $(32-ARCHS)))
