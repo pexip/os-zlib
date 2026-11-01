@@ -1,3 +1,13 @@
+zlib (1:1.3.dfsg+really1.3.1-1+deb13u1) trixie-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Check for negative lengths in crc32_combine functions (CVE-2026-27171)
+    (Closes: #1128336)
+  * Fix buffer overflow bug in non-blocking gzwrite (CVE-2026-85091)
+    (Closes: #1146895)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 01 Nov 2026 06:57:53 +0100
+
 zlib (1:1.3.dfsg+really1.3.1-1) unstable; urgency=low
 
   * New upstream release.

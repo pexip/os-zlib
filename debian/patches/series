@@ -1,0 +1,2 @@
+Check-for-negative-lengths-in-crc32_combine-function.patch
+Fix-buffer-overflow-bug-in-non-blocking-gzwrite.patch
